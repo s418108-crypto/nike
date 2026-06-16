@@ -2,7 +2,7 @@
 const MODEL_URL = "models/best.onnx";
 const LABELS_URL = "labels.json";
 const MODEL_INPUT_SIZE = 640; // 必須與 YOLOv8 匯出 ONNX 時的 imgsz 一致
-const IOU_THRESHOLD = 0.45;
+const IOU_THRESHOLD = 0.75;
 let CONF_THRESHOLD = 0.25;
 
 // ====== DOM ======
@@ -26,7 +26,7 @@ let stream = null;
 let animationId = null;
 let isRunningCamera = false;
 let lastInferTime = 0;
-const INFER_INTERVAL_MS = 120; // 數值越小越即時，但手機負擔越重
+const INFER_INTERVAL_MS = 50; // 數值越小越即時，但手機負擔越重
 
 confSlider.addEventListener("input", () => {
   CONF_THRESHOLD = Number(confSlider.value);
